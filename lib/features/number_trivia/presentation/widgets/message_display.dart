@@ -4,9 +4,9 @@ class MessageDisplay extends StatelessWidget {
   final String message;
 
   const MessageDisplay({
-    Key key,
-    @required this.message,
-  }) : super(key: key);
+    super.key,
+    required this.message,
+  });
 
   @override
   Widget build(BuildContext context) {

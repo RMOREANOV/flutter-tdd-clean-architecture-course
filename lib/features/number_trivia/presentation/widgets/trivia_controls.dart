@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TriviaControls extends StatefulWidget {
   const TriviaControls({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _TriviaControlsState createState() => _TriviaControlsState();
@@ -13,7 +13,6 @@ class TriviaControls extends StatefulWidget {
 
 class _TriviaControlsState extends State<TriviaControls> {
   final controller = TextEditingController();
-  String inputStr;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +25,6 @@ class _TriviaControlsState extends State<TriviaControls> {
             border: OutlineInputBorder(),
             hintText: 'Input a number',
           ),
-          onChanged: (value) {
-            inputStr = value;
-          },
           onSubmitted: (_) {
             dispatchConcrete();
           },
@@ -37,16 +33,17 @@ class _TriviaControlsState extends State<TriviaControls> {
         Row(
           children: <Widget>[
             Expanded(
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('Search'),
-                color: Theme.of(context).accentColor,
-                textTheme: ButtonTextTheme.primary,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
                 onPressed: dispatchConcrete,
               ),
             ),
             SizedBox(width: 10),
             Expanded(
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('Get random trivia'),
                 onPressed: dispatchRandom,
               ),
@@ -58,9 +55,9 @@ class _TriviaControlsState extends State<TriviaControls> {
   }
 
   void dispatchConcrete() {
+    final inputString = controller.value.text;
     controller.clear();
-    BlocProvider.of<NumberTriviaBloc>(context)
-        .add(GetTriviaForConcreteNumber(inputStr));
+    BlocProvider.of<NumberTriviaBloc>(context).add(GetTriviaForConcreteNumber(inputString));
   }
 
   void dispatchRandom() {
