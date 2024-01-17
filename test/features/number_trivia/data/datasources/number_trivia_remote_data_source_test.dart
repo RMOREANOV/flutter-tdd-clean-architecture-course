@@ -15,6 +15,10 @@ void main() {
   late NumberTriviaRemoteDataSourceImpl dataSource;
   late MockHttpClient mockHttpClient;
 
+  setUpAll(() {
+    registerFallbackValue(Uri.parse('http://numbersapi.com/1'));
+  });
+
   setUp(() {
     mockHttpClient = MockHttpClient();
     dataSource = NumberTriviaRemoteDataSourceImpl(client: mockHttpClient);
@@ -29,7 +33,7 @@ void main() {
   }
 
   group('getConcreteNumberTrivia', () {
-    final tNumber = 1;
+    const tNumber = 1;
     final tNumberTriviaModel = NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
 
     test(
