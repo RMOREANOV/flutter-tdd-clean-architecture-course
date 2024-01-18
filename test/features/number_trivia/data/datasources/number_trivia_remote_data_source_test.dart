@@ -12,8 +12,8 @@ import '../../../../fixtures/fixture_reader.dart';
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late NumberTriviaRemoteDataSourceImpl dataSource;
   late MockHttpClient mockHttpClient;
+  late NumberTriviaRemoteDataSourceImpl dataSource;
 
   setUpAll(() {
     registerFallbackValue(Uri.parse('http://numbersapi.com/1'));
@@ -74,7 +74,7 @@ void main() {
         // act
         final call = dataSource.getConcreteNumberTrivia;
         // assert
-        expect(() => call(tNumber), throwsA(TypeMatcher<ServerException>()));
+        expect(() => call(tNumber), throwsA(const TypeMatcher<ServerException>()));
       },
     );
   });
@@ -120,7 +120,7 @@ void main() {
         // act
         final call = dataSource.getRandomNumberTrivia;
         // assert
-        expect(() => call(), throwsA(TypeMatcher<ServerException>()));
+        expect(() => call(), throwsA(const TypeMatcher<ServerException>()));
       },
     );
   });
