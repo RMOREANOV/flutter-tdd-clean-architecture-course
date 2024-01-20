@@ -4,6 +4,8 @@
 
 #### _Find more tutorials on [resocoder.com](https://resocoder.com)_
 
+<img src="./clean-arquitecture&architecture-proposal.png" style="display: block; margin-left: auto; margin-right: auto; width: 75%;"/>
+
 <br />
 
 <h3 align="center">Architecture Proposal</h3>
